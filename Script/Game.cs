@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Advertisements;
-using UnityEngine.Purchasing;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     public Carrot.Carrot carrot;
-    [Header("Ads")]
-    public string id_app_ads_vungle;
-    public string id_banner_ads_vungle;
-    public string id_trunggiang_ads_vungle;
 
     [Header("Panel Game")]
     public GameObject panel_home;
@@ -182,7 +173,7 @@ public class Game : MonoBehaviour
     {
         this.timer_complete_started = true;
         this.play_sound(3);
-        this.GetComponent<Rank>().add_rank(this.level_curent.id_level,this.level_curent.Name_level, this.timer);
+        carrot.game.update_scores_player(int.Parse(this.timer.ToString()), this.level_curent.id_level);
         this.effect_win.SetActive(true);
     }
 
@@ -190,7 +181,7 @@ public class Game : MonoBehaviour
     [ContextMenu("Test add rank")]
     public void test_add_rank()
     {
-        this.GetComponent<Rank>().add_rank(this.level_curent.id_level,this.level_curent.Name_level, this.timer);
+        carrot.game.update_scores_player(int.Parse(this.timer.ToString()), this.level_curent.id_level);
         Debug.Log("Add rank " + this.level_curent + " Timer :" + this.timer);
     }
 
