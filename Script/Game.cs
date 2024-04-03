@@ -235,4 +235,10 @@ public class Game : MonoBehaviour
         this.play_sound(1);
         this.carrot.Create_Setting();
     }
+
+    public void Btn_show_rank()
+    {
+        this.play_sound(1);
+        this.carrot.game.Show_List_Top_player();
+    }
 }
