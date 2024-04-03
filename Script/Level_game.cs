@@ -2,6 +2,7 @@
 
 public class Level_game : MonoBehaviour
 {
+    public Sprite icon;
     public int id_level;
     public string Name_level;
     public GameObject[] Number_obj;

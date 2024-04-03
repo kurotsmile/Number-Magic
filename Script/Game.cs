@@ -47,6 +47,9 @@ public class Game : MonoBehaviour
         this.panel_pause.SetActive(false);
         this.panel_mission_complete.SetActive(false);
         this.panel_help.SetActive(false);
+
+        carrot.game.Set_Order_By_Top_player(Carrot.Carrot_game_rank_order.Ascending);
+        for (int i = 0; i < this.game_level.Length; i++) carrot.game.Add_type_rank(this.game_level[i].Name_level, this.game_level[i].icon);
     }
 
     private void check_exit_app()
@@ -173,7 +176,7 @@ public class Game : MonoBehaviour
     {
         this.timer_complete_started = true;
         this.play_sound(3);
-        carrot.game.update_scores_player(int.Parse(this.timer.ToString()), this.level_curent.id_level);
+        carrot.game.update_scores_player(int.Parse(this.timer.ToString()), (this.level_curent.id_level-1));
         this.effect_win.SetActive(true);
     }
 
@@ -181,7 +184,7 @@ public class Game : MonoBehaviour
     [ContextMenu("Test add rank")]
     public void test_add_rank()
     {
-        carrot.game.update_scores_player(int.Parse(this.timer.ToString()), this.level_curent.id_level);
+        carrot.game.update_scores_player(Random.Range(0,20), (this.level_curent.id_level - 1));
         Debug.Log("Add rank " + this.level_curent + " Timer :" + this.timer);
     }
 
